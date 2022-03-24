@@ -11,20 +11,20 @@
 
   - Title: 
   
-Minesweeper game
+    Minesweeper game
   
   - Rules: 
   
-In Minesweeper, mines are scattered throughout a board, which is divided into cells with coordinates.
-Cells have three states: uncovered, covered (C) and flagged (F). 
-A covered cell is blank and clickable, while an uncovered cell is exposed. 
-Flagged cells are those marked by the player to indicate a potential mine location.
-Player choose whether to uncover of flag a cell and then enters its coordinates.
-If a player uncovers a mined cell, the game ends, as there is only 1 life per game. 
-Otherwise, the uncovered cell displays either a number, indicating the number of mines diagonally and/or adjacent to it, or a blank tile (or "0"), and all adjacent non-mined cells will automatically be uncovered. 
-Flagged cells are still considered covered, and a player can choose to uncover them.
-The first cell choice in any game will never be a mine.
-To win the game, players must uncover all non-mine cells. Flagging all the mined cells is not required.
+    In Minesweeper, mines are scattered throughout a board, which is divided into cells with coordinates.
+    Cells have three states: uncovered, covered (C) and flagged (F). 
+    A covered cell is blank and clickable, while an uncovered cell is exposed. 
+    Flagged cells are those marked by the player to indicate a potential mine location.
+    Player choose whether to uncover of flag a cell and then enters its coordinates.
+    If a player uncovers a mined cell, the game ends, as there is only 1 life per game. 
+    Otherwise, the uncovered cell displays either a number, indicating the number of mines diagonally and/or adjacent to it, or a blank tile (or "0"), and     all adjacent non-mined cells will automatically be uncovered. 
+    Flagged cells are still considered covered, and a player can choose to uncover them.
+    The first cell choice in any game will never be a mine.
+    To win the game, players must uncover all non-mine cells. Flagging all the mined cells is not required.
 
   - Features:
   
