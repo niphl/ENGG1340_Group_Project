@@ -33,14 +33,14 @@ void run_stats(){
 
 //Explains the rules of the game
 void run_rules(){
-    cout << "Here's how to play"
-    cout << "(Press any key to continue)..."
+    cout << "Here's how to play" << endl;
+    cout << "(Press any key to continue)..."<< endl;
 }
 
 void run_main_menu(){
     string mainMenuInput;
     bool valid_menu_input = false;
-    cout << "MINESWEEPER TEXT VERSION" << endl;
+    cout << "MINESWEEPER TEXT EDITION!!" << endl;
     cout << "Enter (1) for New Game" << endl;
     cout << "Enter (2) for Load Game" << endl;
     cout << "Enter (3) for Stats/Game History" << endl;
@@ -64,7 +64,7 @@ void run_main_menu(){
             run_rules();
         }
         else {
-            cout << "Invalid User Input." << endl;
+            cout << "Invalid User Input. Please try again." << endl;
             cout << "Enter (1) for New Game" << endl;
             cout << "Enter (2) for Load Game" << endl;
             cout << "Enter (3) for Stats/Game History" << endl;
@@ -74,7 +74,7 @@ void run_main_menu(){
 }    
 
 int main(){
-
+    run_main_menu();
     
     return 0;
 }
