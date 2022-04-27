@@ -1,6 +1,7 @@
 //Main Game
 
 #include <iostream>
+#include <iomanip>
 #include <cstdlib>
 #include <string>
 
@@ -10,7 +11,70 @@ void print_board() {
     
 }
 
+//Lets the user pick some settings before starting a new game.
+void run_new_game() {
+    cout << "Please choose a difficulty" << endl;
+    cout << "Enter (1) for Easy" << endl;
+    cout << "Enter (2) for Medium" << endl;
+    cout << "Enter (3) for Hard" << endl;
+    cout << "Enter (4) for Expert" << endl;
+    cout << "Enter (5) for Custom (Game stats not saved)" << endl;
+}
+
+//Loads a game from our file of saved games
+void run_load_game(){
+    cout << "Please choose a game to load" << endl;
+}
+
+//Shows the stats of our player
+void run_stats(){
+    
+}
+
+//Explains the rules of the game
+void run_rules(){
+    cout << "Here's how to play"
+    cout << "(Press any key to continue)..."
+}
+
+void run_main_menu(){
+    string mainMenuInput;
+    bool valid_menu_input = false;
+    cout << "MINESWEEPER TEXT VERSION" << endl;
+    cout << "Enter (1) for New Game" << endl;
+    cout << "Enter (2) for Load Game" << endl;
+    cout << "Enter (3) for Stats/Game History" << endl;
+    cout << "Enter (4) for Rules/Help" << endl;
+    while (valid_menu_input == false) {
+        cin >> mainMenuInput;
+        if (mainMenuInput == "1" || mainMenuInput == "(1)"){
+            valid_menu_input = true;
+            run_new_game();
+        }
+        else if (mainMenuInput == "2" || mainMenuInput == "(2)"){
+            valid_menu_input = true;
+            run_load_game();
+        }
+        else if (mainMenuInput == "3" || mainMenuInput == "(3)"){
+            valid_menu_input = true;
+            run_stats();
+        }
+        else if (mainMenuInput == "4" || mainMenuInput == "(4)"){
+            valid_menu_input = true;
+            run_rules();
+        }
+        else {
+            cout << "Invalid User Input." << endl;
+            cout << "Enter (1) for New Game" << endl;
+            cout << "Enter (2) for Load Game" << endl;
+            cout << "Enter (3) for Stats/Game History" << endl;
+            cout << "Enter (4) for Rules/Help" << endl;
+        }
+    }
+}    
+
 int main(){
 
+    
     return 0;
 }
