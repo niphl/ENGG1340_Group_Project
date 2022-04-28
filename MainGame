@@ -7,18 +7,64 @@
 
 using namespace std;
 
+//Main Menu Functions
+void run_new_game();
+void run_load_game();
+void run_stats();
+void run_rules();
+void run_main_menu();
 void print_board() {
     
+}
+
+void start_new_game(int difficulty, int SizeX, int SizeY, int numMines) {
+
 }
 
 //Lets the user pick some settings before starting a new game.
 void run_new_game() {
     cout << "Please choose a difficulty" << endl;
-    cout << "Enter (1) for Easy" << endl;
-    cout << "Enter (2) for Medium" << endl;
-    cout << "Enter (3) for Hard" << endl;
-    cout << "Enter (4) for Expert" << endl;
-    cout << "Enter (5) for Custom (Game stats not saved)" << endl;
+    cout << "Enter (1) for Beginner" << endl;
+    cout << "Enter (2) for Intermediate" << endl;
+    cout << "Enter (3) for Expert" << endl;
+    cout << "Enter (4) for Custom (Game stats not saved)" << endl;
+    string userInput;
+    bool validInput = false;
+    while (validInput == false) {
+        cin >> userInput;
+        if (userInput == "1" || userInput == "(1)"){
+            validInput = true;
+            start_new_game(1, 8, 8, 10);
+        }
+        else if (userInput == "2" || userInput == "(2)"){
+            validInput = true;
+            start_new_game(2, 16, 16, 40);
+        }
+        else if (userInput == "3" || userInput == "(3)"){
+            validInput = true;
+            start_new_game(3, 30, 16, 99);
+        }
+        else if (userInput == "4" || userInput == "(4)"){
+            validInput = true;
+            int sizeX, sizeY, numMines;
+            cout << "Please enter the width of the board: (4-30)" << endl;
+            //Code to take width of the board
+            //Must be an int 4-30. Take user input and store it in sizeX. If invalid input, prompt user again.
+            cout << "Please enter the height of the board: (4-26)" << endl;
+            //Code to take height of the board
+            cout << "Please enter the number of mines: (1-255)" << endl;
+            //Code to take the number of mines
+        }
+        else {
+            cout << "Invalid User Input. Please try again." << endl;
+            cout << "Please choose a difficulty" << endl;
+            cout << "Enter (1) for Beginner" << endl;
+            cout << "Enter (2) for Intermediate" << endl;
+            cout << "Enter (3) for Expert" << endl;
+            cout << "Enter (4) for Custom (Game stats not saved)" << endl;
+        }
+    }
+    
 }
 
 //Loads a game from our file of saved games
@@ -34,33 +80,37 @@ void run_stats(){
 //Explains the rules of the game
 void run_rules(){
     cout << "Here's how to play" << endl;
+    // Explain the rules
     cout << "(Press any key to continue)..."<< endl;
+    string userInput;
+    cin >> userInput;
+    run_main_menu();
 }
 
 void run_main_menu(){
-    string mainMenuInput;
-    bool valid_menu_input = false;
     cout << "MINESWEEPER TEXT EDITION!!" << endl;
     cout << "Enter (1) for New Game" << endl;
     cout << "Enter (2) for Load Game" << endl;
     cout << "Enter (3) for Stats/Game History" << endl;
     cout << "Enter (4) for Rules/Help" << endl;
-    while (valid_menu_input == false) {
-        cin >> mainMenuInput;
-        if (mainMenuInput == "1" || mainMenuInput == "(1)"){
-            valid_menu_input = true;
+    string userInput;
+    bool validInput = false;
+    while (validInput == false) {
+        cin >> userInput;
+        if (userInput == "1" || userInput == "(1)"){
+            validInput = true;
             run_new_game();
         }
-        else if (mainMenuInput == "2" || mainMenuInput == "(2)"){
-            valid_menu_input = true;
+        else if (userInput == "2" || userInput == "(2)"){
+            validInput = true;
             run_load_game();
         }
-        else if (mainMenuInput == "3" || mainMenuInput == "(3)"){
-            valid_menu_input = true;
+        else if (userInput == "3" || userInput == "(3)"){
+            validInput = true;
             run_stats();
         }
-        else if (mainMenuInput == "4" || mainMenuInput == "(4)"){
-            valid_menu_input = true;
+        else if (userInput == "4" || userInput == "(4)"){
+            validInput = true;
             run_rules();
         }
         else {
