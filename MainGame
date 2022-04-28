@@ -13,6 +13,18 @@ void run_load_game();
 void run_stats();
 void run_rules();
 void run_main_menu();
+
+//Main Game Functions
+struct Board{
+    int * mineBoard; //stores where the mines are
+    int * playerBoard; //stores where the player has checked and flagged
+    int difficulty;
+    int sizeX;
+    int sizeY;
+    int numMines;
+};
+
+
 void print_board() {
     
 }
@@ -28,6 +40,7 @@ void run_new_game() {
     cout << "Enter (2) for Intermediate" << endl;
     cout << "Enter (3) for Expert" << endl;
     cout << "Enter (4) for Custom (Game stats not saved)" << endl;
+    //cout << "Enter (5) for Knight Sweeper special game mode" << endl;
     string userInput;
     bool validInput = false;
     while (validInput == false) {
