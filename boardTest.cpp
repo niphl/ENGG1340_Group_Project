@@ -22,7 +22,7 @@ struct Board{
     int sizeX;          //The size of the board in the X direction
     int sizeY;          //The size of the board in the Y direction
     int numMines;       //The number of mines in total on the board.
-    int date;           //deprecated ? Not sure if we are still using this
+    int seed;           //deprecated ? Not sure if we are still using this
     
     //Function: Uncover
     //Uncovers a cell with coordinates equal to its argument.
@@ -60,6 +60,7 @@ struct Board{
     //ARGUMENTS: The coordinates of the first move the player makes (The set up happens after the first move)
     //Effect: Places mines randomly on the board, except adjacent to the first move, and fills the playerBoard with hidden cells.
     void initialize(int x, int y) { //Input parameters are where the first move is made.
+        srand(seed);
         mineBoard = new int [sizeX * sizeY];
         playerBoard = new char [sizeX * sizeY];
         //Initialize the playerBoard;
@@ -215,7 +216,6 @@ int main(){
         40,
         0,
     };
-    srand(112);
     b.print_board();
     b.prompt_move();
     return 0;
