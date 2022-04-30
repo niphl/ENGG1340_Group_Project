@@ -14,7 +14,8 @@ int strToY(string s, int max);
 struct Board{
     int * mineBoard;    //stores where the mines are, 1 for cells that have a mine, 0 for cells with no mine.
     char * playerBoard; //stores where the player has checked and flagged,'U' for uncovered, 'F' for flagged 'X' for hidden
-    
+    int * moveHistory;
+    bool flagMode;
     //Both arrays are stored such that we count the cells from left to right, from the top to bottom.
     //This means the i-th element of each array stores the element with x coordinate: i%sizeX and y coordinate i/sizeX.
     
@@ -22,7 +23,7 @@ struct Board{
     int sizeX;          //The size of the board in the X direction
     int sizeY;          //The size of the board in the Y direction
     int numMines;       //The number of mines in total on the board.
-    int seed;           //deprecated ? Not sure if we are still using this
+    int seed;           //The seed for srand().
     
     //Function: Uncover
     //Uncovers a cell with coordinates equal to its argument.
@@ -156,21 +157,70 @@ struct Board{
         int moveX = -1, moveY = -1;
         string userInput;
         cout << "Please insert a move: " << endl;
-        while (moveX == -1 || moveY == -1) {
+        while ((moveX == -1 || moveY == -1)) {
             cin >> userInput;
-            moveX = strToX(userInput, sizeX);
-            moveY = strToY(userInput, sizeY);
-            if (moveX == -1 || moveY == -1) {
-                cout << "Invalid move! Please try again" << endl;
+            //Handle different cases now.
+            if (userInput == "F" || userInput == "f") {
+                if (mineBoard == NULL) {
+                    cout << "Make a move first before using flag mode!";
+                }
+                else if (flagMode == false) {
+                    cout << "Flag mode turned on!" << endl;
+                    flagMode = true;
+                }
+                else {
+                    cout << "Flag mode turned off!" << endl;
+                    flagMode = false;
+                }
+            }
+            else {
+                moveX = strToX(userInput, sizeX);
+                moveY = strToY(userInput, sizeY);
+                if (moveX == -1 || moveY == -1) {
+                    cout << "Invalid move! Please try again" << endl;
+                }
             }
         }
         //If board is not yet initialized, we use the move to initialize the board.
         if (mineBoard == NULL) {
             initialize(moveX, moveY);
+            uncover(moveX, moveY);
+            cout << "initializing.." << endl;
+            print_board();
         }
-        uncover(moveX, moveY);
-        print_board();
+        //Cell already uncovered
+        else if (playerBoard[moveY*sizeX + moveX] == 'U') {
+            cout << "Cell already uncovered! Please try again." << endl;
+        }
+        //Regular move
+        else if (flagMode == false) {
+            //Need code: Store move in data
+            if (playerBoard[moveY*sizeX + moveX] == 'F') {
+                cout << "Cell is flagged, so can't be uncovered! Please Unflag first." << endl;
+            }
+            else {
+                uncover(moveX, moveY);
+                print_board();
+            }
+        }
+        //Flag Mode Handling
+        else {
+            flagMove(moveX, moveY);
+            print_board();
+            //Need code: Store Move in Data
+        }
         prompt_move(); //If game not ended, we prompt.
+    }
+    //How our program handles when the player flags a cell.
+    void flagMove(int x, int y){
+        //If it's flagged, unflag it.
+        if (playerBoard[y*sizeX + x] == 'F') {
+            playerBoard[y*sizeX + x] = 'X';
+        }
+        //Else, flag it.
+        else if (playerBoard[y*sizeX + x] == 'X') {
+            playerBoard[y*sizeX + x] = 'F';
+        }
     }
 };
 
@@ -210,6 +260,10 @@ int main(){
     Board b = {
         NULL,
         NULL,
+        //New test elements
+        NULL,
+        false,
+        //Existing test elements
         1,
         16,
         16,
