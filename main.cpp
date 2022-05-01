@@ -267,24 +267,5 @@ void run_main_menu(){
 }    
 
 int main(){
-    //run_main_menu();
-    
-        Board b = {
-        NULL,
-        NULL,
-        //New test elements
-        NULL,
-        false,
-        //Existing test elements
-        1,
-        16,
-        16,
-        40,
-        0,
-    };
-    b.print_board();
-    b.prompt_move();
-    return 0;
-    
-    return 0;
+    run_main_menu();
 }
