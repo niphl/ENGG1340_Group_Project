@@ -96,8 +96,8 @@ void run_new_game() {
 void run_load_game(){
     ifstream fin;
     fin.open("savegame.txt");
-    int difficulty, SizeX, SizeY, numMines, Seed, mineboard0, mineboard1, mineboard2, x;
-    fin >> difficulty >> SizeX >> SizeY >> numMines >> Seed >> mineboard0 >> mineboard1 >> mineboard2;
+    int difficulty, SizeX, SizeY, numMines, Seed, moveHist0, moveHist1, moveHist2, x, count;
+    fin >> difficulty >> SizeX >> SizeY >> numMines >> Seed >> moveHist0 >> moveHist1 >> moveHist2;
     if (fin.fail()){
         cout << "Game not found!" << endl;
     }
@@ -113,15 +113,21 @@ void run_load_game(){
             numMines,   //Num of Mines
             Seed,       //Seed
         };
-        if (mineboard2 >= 20000) {
-            mineboard2 -= 20000;
+        if (moveHist2 >= 20000) {
+            moveHist2 -= 20000;
         }
         else {
-            mineboard2 -= 10000;
+            moveHist2 -= 10000;
         }
-        b.initialize(mineboard2/100, mineboard2%100);
-        b.uncover(mineboard2/100,mineboard2%100);
+        b.initialize(moveHist2/100, moveHist2%100);
+        b.uncover(moveHist2/100,moveHist2%100);
+        b.moveHistory[0] = moveHist0;
+        b.moveHistory[1] = moveHist1;
+        b.moveHistory[2] = moveHist2 + 10000;
+        count = 3;
         while (fin >> x) {
+            b.moveHistory[count] = x;
+            count++;
             if (x >= 20000) {
                 x -= 20000;
                 b.flagMove(x/100,x%100);
@@ -265,62 +271,8 @@ void run_rules(){
         cout << "Type 'f' to toggle flagging mode."<< endl;
         cin >> userInput;
     }
-    
-    //Page 9
-    cout << string(50, '\n');
-    cout << "Let's have a look at the main menu" << endl;
-    cout << "The main menu allows you to:" << endl;
-    cout << "\"Enter (1) for New Game\" to start a new game" << endl;
-    cout << "\"Enter (2) for Load Game\" to play the last unfinished game" << endl;
-    cout << "\"Enter (3) for Stats/Game History\" to look at data about past games" << endl;
-    cout << "\"Enter (4) for Tutorial\": You're looking at it now!" << endl;
-    cout << "(Press any key to continue...)"<< endl;
-    cin >> userInput;
-
-    //Page 10
-    cout << string(50, '\n');
-    cout << "Let's have a look at the Stats/Game History"<< endl;
-    cout << "Main Menu: "<< endl;
-    cout << "Enter (1) for New Game" << endl;
-    cout << "Enter (2) for Load Game" << endl;
-    cout << "Enter (3) for Stats/Game History" << endl;
-    cout << "Enter (4) for Tutorial"<< endl;
-    cout << endl;
-    cout << "Type '3' to look at the Stats/Game History" << endl;
-    cin >> userInput;
-    while (userInput != "3") {
-        cout << "Type '3' to look at the Stats/Game History" << endl;
-        cin >> userInput;
-    }
-    
-    //Page 11
-    cout << string(50, '\n');
-    ifstream stats;
-    stats.open("stats.txt");
-    if (stats) {
-        run_stats;
-    }
-    else {
-        cout << "You need to play a game to get the first stats!"<< endl;
-        cout << "Stats are specific to the different levels, you will be able to choose between: " << endl;
-        cout << "\"Enter (R) to reset all stats\": to delete all stats" << endl;
-        cout << "\"Enter (1) for Beginner stats\": to check the Beginner level stats" << endl;
-        cout << "\"Enter (2) for Intermediate stats\": to check the Intermediate level stats" << endl;
-        cout << "\"Enter (3) for Expert stats\": to check the Expert level stats" << endl;
-        cout << "\"Enter (5) for Knight Sweeper special game mode stats\": to check the Knight Sweeper special game stats" << endl;
-    }
-    cout << endl << "(Press any key to continue...)"<< endl;
-    cin >> userInput;
-    
-    //Final Tutorial Page 
-    cout << string(50, '\n');
-    cout << "You are ready to play now!" << endl;
-    cout << "(Press any key to play!)"<< endl;
-    cin >> userInput;
-    
-    //back to main menu
+    //Tutorial not yet complete
     run_main_menu();
-    //Tutorial not yet completed
 }
 
 void run_main_menu(){
@@ -355,7 +307,7 @@ void run_main_menu(){
             cout << "Enter (1) for New Game" << endl;
             cout << "Enter (2) for Load Game" << endl;
             cout << "Enter (3) for Stats/Game History" << endl;
-            cout << "Enter (4) for Tutorial" << endl;
+            cout << "Enter (4) for Rules/Help" << endl;
         }
     }
 }    
