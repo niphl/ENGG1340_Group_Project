@@ -264,7 +264,7 @@ void run_main_menu(){
             validInput = true;
             run_load_game();
         }
-        else if (userInput == "3" || userInput == "(4)"){
+        else if (userInput == "3" || userInput == "(3)"){
             validInput = true;
             run_rules();
         }
