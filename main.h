@@ -348,6 +348,7 @@ struct Board{
     }
 };
 
+
 // Takes a user string and returns the X coordinate indicated by the user. If error, return -1.
 /*
 int strToX(string s, int max){
