@@ -253,13 +253,13 @@ void end_game(string decision = 'notSave') {
         cout << "You can finish your game from the main menu \"(2) Load Game\"" << endl;
         cout << "(Press any key to go to the main menu...)"<< endl;
         cin >> userInput;
-        run_main_meny();
+        run_main_menu();
     }
     else {
         cout << "The game is lost... You can start a new game from the main menu!"
         cout << "(Press any key to go to the main menu...)"<< endl;
         cin >> userInput;
-        run_main_meny();
+        run_main_menu();
     }
 }
 
