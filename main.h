@@ -67,7 +67,7 @@ struct Board{
         mineBoard = new int [sizeX * sizeY];
         playerBoard = new char [sizeX * sizeY];
         moveHistory = new int [32];
-        moveHistory[0] = 0;
+        moveHistory[0] = 2;
         moveHistory[1] = 32;
         //Initialize the playerBoard;
         for (int i=0; i<sizeX * sizeY;i++){
