@@ -248,7 +248,12 @@ void run_rules(){
 
 void end_game(string decision = 'notSave') {
     if (decision = 'save') {
-        //save the game : To be implemented
+        saveGame();
+        cout << "The game has been saved, you can continue playing it later" << endl;
+        cout << "You can finish your game from the main menu \"(2) Load Game\"" << endl;
+        cout << "(Press any key to go to the main menu...)"<< endl;
+        cin >> userInput;
+        run_main_meny();
     }
     else {
         cout << "The game is lost... You can start a new game from the main menu!"
