@@ -355,7 +355,7 @@ void run_main_menu(){
             cout << "Enter (1) for New Game" << endl;
             cout << "Enter (2) for Load Game" << endl;
             cout << "Enter (3) for Stats/Game History" << endl;
-            cout << "Enter (4) for Rules/Help" << endl;
+            cout << "Enter (4) for Tutorial" << endl;
         }
     }
 }    
