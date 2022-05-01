@@ -265,8 +265,62 @@ void run_rules(){
         cout << "Type 'f' to toggle flagging mode."<< endl;
         cin >> userInput;
     }
-    //Tutorial not yet complete
+    
+    //Page 9
+    cout << string(50, '\n');
+    cout << "Let's have a look at the main menu" << endl;
+    cout << "The main menu allows you to:" << endl;
+    cout << "\"Enter (1) for New Game\" to start a new game" << endl;
+    cout << "\"Enter (2) for Load Game\" to play the last unfinished game" << endl;
+    cout << "\"Enter (3) for Stats/Game History\" to look at data about past games" << endl;
+    cout << "\"Enter (4) for Tutorial\": You're looking at it now!" << endl;
+    cout << "(Press any key to continue...)"<< endl;
+    cin >> userInput;
+
+    //Page 10
+    cout << string(50, '\n');
+    cout << "Let's have a look at the Stats/Game History"<< endl;
+    cout << "Main Menu: "<< endl;
+    cout << "Enter (1) for New Game" << endl;
+    cout << "Enter (2) for Load Game" << endl;
+    cout << "Enter (3) for Stats/Game History" << endl;
+    cout << "Enter (4) for Tutorial"<< endl;
+    cout << endl;
+    cout << "Type '3' to look at the Stats/Game History" << endl;
+    cin >> userInput;
+    while (userInput != "3") {
+        cout << "Type '3' to look at the Stats/Game History" << endl;
+        cin >> userInput;
+    }
+    
+    //Page 11
+    cout << string(50, '\n');
+    ifstream stats;
+    stats.open("stats.txt");
+    if (stats) {
+        run_stats;
+    }
+    else {
+        cout << "You need to play a game to get the first stats!"<< endl;
+        cout << "Stats are specific to the different levels, you will be able to choose between: " << endl;
+        cout << "\"Enter (R) to reset all stats\": to delete all stats" << endl;
+        cout << "\"Enter (1) for Beginner stats\": to check the Beginner level stats" << endl;
+        cout << "\"Enter (2) for Intermediate stats\": to check the Intermediate level stats" << endl;
+        cout << "\"Enter (3) for Expert stats\": to check the Expert level stats" << endl;
+        cout << "\"Enter (5) for Knight Sweeper special game mode stats\": to check the Knight Sweeper special game stats" << endl;
+    }
+    cout << endl << "(Press any key to continue...)"<< endl;
+    cin >> userInput;
+    
+    //Final Tutorial Page 
+    cout << string(50, '\n');
+    cout << "You are ready to play now!" << endl;
+    cout << "(Press any key to play!)"<< endl;
+    cin >> userInput;
+    
+    //back to main menu
     run_main_menu();
+    //Tutorial not yet completed
 }
 
 void run_main_menu(){
