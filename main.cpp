@@ -246,6 +246,18 @@ void run_rules(){
     run_main_menu();
 }
 
+void end_game(string decision = 'notSave') {
+    if (decision = 'save') {
+        //save the game : To be implemented
+    }
+    else {
+        cout << "The game is lost... You can start a new game from the main menu!"
+        cout << "(Press any key to go to the main menu...)"<< endl;
+        cin >> userInput;
+        run_main_meny();
+    }
+}
+
 void run_main_menu(){
     cout << string(50, '\n');
     cout << "MINESWEEPER TEXT EDITION!!" << endl;
