@@ -1,4 +1,3 @@
-
 //Main Game
 
 #include <iostream>
@@ -16,7 +15,6 @@ using namespace std;
 void start_new_game();
 void run_new_game();
 void run_load_game();
-void run_stats();
 void run_rules();
 void run_main_menu();
 
@@ -96,31 +94,6 @@ void run_new_game() {
 //Loads a game from our file of saved games
 void run_load_game(){
     cout << "Please choose a game to load" << endl;
-}
-
-//Shows the stats of our player
-void run_stats(){
-    int diff1Games, diff2Games, diff3Games, diff5Games;
-    int diff1Wins, diff2Wins, diff3Wins, diff5Wins;
-    int diff1Cells, diff2Cells, diff3Cells, diff5Cells;
-    string userInput;
-    //Loading data into our variables
-    ifstream fin;
-    fin.open("stats.txt");
-    if (fin.fail()) {
-        cout << "Error: Unable to load stats." << endl;
-        cout << "(Press any key to continue...)"<< endl;
-        cin >> userInput;
-        run_main_menu();
-    }
-    //Input stats into variables
-    cout << string(50, '\n');
-    cout << "Enter (R) to reset all stats" << endl;
-    cout << "Enter (1) for Beginner stats" << endl;
-    cout << "Enter (2) for Intermediate stats" << endl;
-    cout << "Enter (3) for Expert stats" << endl;
-    cout << "Enter (5) for Knight Sweeper special game mode stats" << endl;
-    cout << "Enter (B) to return to main menu" << endl;
 }
 
 //Explains the rules of the game, via an interactive tutorial
@@ -232,20 +205,18 @@ void run_rules(){
     cout << "Let's have a look at the main menu" << endl;
     cout << "The main menu allows you to:" << endl;
     cout << "\"Enter (1) for New Game\" to start a new game" << endl;
-    cout << "\"Enter (2) for Load Game\" to play the last unfinished game" << endl;
-    cout << "\"Enter (3) for Stats/Game History\" to look at data about past games" << endl;
-    cout << "\"Enter (4) for Tutorial\": You're looking at it now!" << endl;
+    cout << "\"Enter (2) for Load Game\" to play the last unfinished game" << endl; 
+    cout << "\"Enter (3) for Tutorial\": You're looking at it now!" << endl;
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
     
     //Page 10
     cout << string(50, '\n');
-    cout << "Let's have a look at the Load Game"<< endl;
-    cout << "Main Menu: "<< endl;
+    cout << "Let's have a look at the Load Game"<< endl; 
+    cout << "Main Menu: "<< endl; 
     cout << "Enter (1) for New Game" << endl;
-    cout << "Enter (2) for Load Game" << endl;
-    cout << "Enter (3) for Stats/Game History" << endl;
-    cout << "Enter (4) for Tutorial"<< endl;
+    cout << "Enter (2) for Load Game" << endl; 
+    cout << "Enter (3) for Tutorial"<< endl;
     cout << endl;
     while (userInput != "2") {
         cout << "Type '2' to play an unfinished game" << endl;
@@ -261,41 +232,6 @@ void run_rules(){
    }
    else {
         cout << "You need to have played and not finished a game first !"<< endl;
-    }
-    cout << endl << "(Press any key to continue...)"<< endl;
-    cin >> userInput;
-
-    //Page 12
-    cout << string(50, '\n');
-    cout << "Let's have a look at the Stats/Game History"<< endl;
-    cout << "Main Menu: "<< endl;
-    cout << "Enter (1) for New Game" << endl;
-    cout << "Enter (2) for Load Game" << endl;
-    cout << "Enter (3) for Stats/Game History" << endl;
-    cout << "Enter (4) for Tutorial"<< endl;
-    cout << endl;
-    cout << "Type '3' to look at the Stats/Game History" << endl;
-    cin >> userInput;
-    while (userInput != "3") {
-        cout << "Type '3' to look at the Stats/Game History" << endl;
-        cin >> userInput;
-    }
-    
-    //Page 13
-    cout << string(50, '\n');
-    ifstream stats;
-    stats.open("stats.txt");
-    if (stats) {
-        run_stats;
-    }
-    else {
-        cout << "You need to play a game to get the first stats!"<< endl;
-        cout << "Stats are specific to the different levels, you will be able to choose between: " << endl;
-        cout << "\"Enter (R) to reset all stats\": to delete all stats" << endl;
-        cout << "\"Enter (1) for Beginner stats\": to check the Beginner level stats" << endl;
-        cout << "\"Enter (2) for Intermediate stats\": to check the Intermediate level stats" << endl;
-        cout << "\"Enter (3) for Expert stats\": to check the Expert level stats" << endl;
-        cout << "\"Enter (5) for Knight Sweeper special game mode stats\": to check the Knight Sweeper special game stats" << endl;
     }
     cout << endl << "(Press any key to continue...)"<< endl;
     cin >> userInput;
@@ -315,8 +251,7 @@ void run_main_menu(){
     cout << "MINESWEEPER TEXT EDITION!!" << endl;
     cout << "Enter (1) for New Game" << endl;
     cout << "Enter (2) for Load Game" << endl;
-    cout << "Enter (3) for Stats/Game History" << endl;
-    cout << "Enter (4) for Tutorial" << endl;
+    cout << "Enter (3) for Tutorial" << endl;
     string userInput;
     bool validInput = false;
     while (validInput == false) {
@@ -329,11 +264,7 @@ void run_main_menu(){
             validInput = true;
             run_load_game();
         }
-        else if (userInput == "3" || userInput == "(3)"){
-            validInput = true;
-            run_stats();
-        }
-        else if (userInput == "4" || userInput == "(4)"){
+        else if (userInput == "3" || userInput == "(4)"){
             validInput = true;
             run_rules();
         }
@@ -341,8 +272,7 @@ void run_main_menu(){
             cout << "Invalid User Input. Please try again." << endl;
             cout << "Enter (1) for New Game" << endl;
             cout << "Enter (2) for Load Game" << endl;
-            cout << "Enter (3) for Stats/Game History" << endl;
-            cout << "Enter (4) for Rules/Help" << endl;
+            cout << "Enter (3) for Rules/Help" << endl;
         }
     }
 }    
