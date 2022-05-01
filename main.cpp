@@ -94,7 +94,47 @@ void run_new_game() {
 
 //Loads a game from our file of saved games
 void run_load_game(){
-    cout << "Please choose a game to load" << endl;
+    ifstream fin;
+    fin.open("savegame.txt");
+    int difficulty, SizeX, SizeY, numMines, Seed, mineboard0, mineboard1, mineboard2, x;
+    fin >> difficulty >> SizeX >> SizeY >> numMines >> Seed >> mineboard0 >> mineboard1 >> mineboard2;
+    if (fin.fail()){
+        cout << "Game not found!" << endl;
+    }
+    else {
+        Board b = {
+            NULL,       //Mineboard, int array
+            NULL,       //Playerboard, char array
+            NULL,       //MoveHistory, int array
+            false,      //Flagmode, off by default at start
+            difficulty, //Difficulty          
+            SizeX,      //SizeX
+            SizeY,      //SizeY
+            numMines,   //Num of Mines
+            Seed,       //Seed
+        };
+        if (mineboard2 >= 20000) {
+            mineboard2 -= 20000;
+        }
+        else {
+            mineboard2 -= 10000;
+        }
+        b.initialize(mineboard2/100, mineboard2%100);
+        b.uncover(mineboard2/100,mineboard2%100);
+        while (fin >> x) {
+            if (x >= 20000) {
+                x -= 20000;
+                b.flagMove(x/100,x%100);
+        }
+            else {
+                x -= 10000;
+                b.uncover(x/100,x%100);
+            }
+        }
+        b.print_board();
+        b.prompt_move();
+        cout << "Game Loaded." << endl;
+    }
 }
 
 //Shows the stats of our player
