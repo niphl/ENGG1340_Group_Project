@@ -61,17 +61,43 @@ void run_new_game() {
             //We differ a bit from the normal miensweeper of 30x16 to make the display nicer
             start_new_game(3, 26, 18, 99);
         }
-        else if (userInput == "4" || userInput == "(4)"){
+        else if (userInput == "4" || userInput == "(4)"){ // QUESTION HERE: sizeX is width or height? I assumed it is width, to change if its not in this else if statement
             validInput = true;
             string userInput;
-            int sizeX, sizeY, numMines;
-            cout << "Please enter the width of the board: (4-26)" << endl;
-            //Code to take width of the board
-            //Must be an int 4-30. Take user input and store it in sizeX. If invalid input, prompt user again.
-            cout << "Please enter the height of the board: (4-30)" << endl;
-            //Code to take height of the board
-            cout << "Please enter the number of mines: (1-255)" << endl;
-            //Code to take the number of mines
+            int sizeX, sizeY, percentageMines;
+            
+            //input width of custom board, stored in sizeX
+            cout << "Please enter the width of the board (4-26): " ;
+            cin >> sizeX;
+            while (sizeX < 4 || sizeX > 26){
+                cout << "Incorrect input. Please enter a value between 4 and 26: ";
+                cin >> sizeX;
+            }
+            
+            //Must be an int 4-30. Take user input and store it in sizeX. (or sizeY?, sizeY here)
+            cout << "Please enter the height of the board (4-30): ";
+            cin >> sizeY;
+            while (sizeY < 4 || sizeY > 30){
+                cout << "Incorrect input. Please enter a value between 4 and 30: ";
+                cin >> sizeY;
+            }
+            
+            
+            //input percentage of custom board filled with mines, stored in percentageMines
+            cout << "Please enter the difficulty of the board from 0 (easiest) to 10(hardest): ";
+            cin >> percentageMines;
+            while (percentageMines < 0  || sizeY > 10) {
+                cout << "Incorrect input. Please enter an integer between 0 and 10: ";
+                cin >> percentageMines;
+            }
+            
+            int numMines;
+            numMines = percentageMines * sizeY * sizeX  / 10; //percentageMines *10 /100 = pMines /10 = percentages of mines filling the board
+            
+            start_new_game(4, sizeX, sizeY, numMines);
+            
+            
+            
         }
         else if (userInput == "5" || userInput == "(5)"){
             validInput = true;
@@ -90,6 +116,7 @@ void run_new_game() {
     }
     
 }
+
 
 //Loads a game from our file of saved games
 void run_load_game(){
@@ -246,9 +273,10 @@ void run_rules(){
     run_main_menu();
 }
 
-void end_game(string decision = 'notSave') {
-    if (decision = 'save') {
-        saveGame();
+void end_game(char decision = 'n') { //'n' for not save and 's' for save
+    string userInput;
+    if (decision = 's') {
+        //saveGame(); //function yet to be defined
         cout << "The game has been saved, you can continue playing it later" << endl;
         cout << "You can finish your game from the main menu \"(2) Load Game\"" << endl;
         cout << "(Press any key to go to the main menu...)"<< endl;
@@ -256,8 +284,8 @@ void end_game(string decision = 'notSave') {
         run_main_menu();
     }
     else {
-        cout << "The game is lost... You can start a new game from the main menu!"
-        cout << "(Press any key to go to the main menu...)"<< endl;
+        cout << "The game is lost... You can start a new game from the main menu!" << endl;
+        cout << "(Press any key to go to the main menu...)" << endl;
         cin >> userInput;
         run_main_menu();
     }
