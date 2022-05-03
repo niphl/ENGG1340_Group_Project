@@ -86,7 +86,7 @@ void run_new_game() {
             //input percentage of custom board filled with mines, stored in percentageMines
             cout << "Please enter the difficulty of the board from 0 (easiest) to 10(hardest): ";
             cin >> percentageMines;
-            while (percentageMines < 0  || sizeY > 10) {
+            while (percentageMines < 0  || percentageMines > 10) {
                 cout << "Incorrect input. Please enter an integer between 0 and 10: ";
                 cin >> percentageMines;
             }
