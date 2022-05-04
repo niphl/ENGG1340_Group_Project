@@ -181,9 +181,9 @@ struct Board{
         cout << endl;
     }
     
-    void end_game(char decision='n') { 
+    void end_game(char decision) { 
         string userInput;
-        if (decision = 's') {
+        if (decision == 's') {
             saveGame(); //function yet to be defined
             cout << "The game has been saved, you can continue playing it later" << endl;
             cout << "You can finish your game from the main menu \"(2) Load Game\"" << endl;
@@ -191,15 +191,23 @@ struct Board{
             cin >> userInput;
             run_main_menu();
         
-    }
-        else {
-            cout << "The game is lost... You can start a new game from the main menu!" << endl;
+        }
+        else if (decision == 'n'){
+            cout << "MINE!!!"<<endl;
+            cout << "You lost the game... You can start a new game from the main menu!" << endl;
             cout << "(Press any key to go to the main menu...)" << endl;
             cin >> userInput;
             run_main_menu();
         
+        }
+        else if (decision =='w'){
+            cout << "You won!!! Well done!"<<endl;
+            cout << "You can play another game from the main menu!"<<endl;
+            cout << "(Press any key to go to the main menu...)"<< endl;
+            cin >> userInput;
+            run_main_menu();
+        }
     }
-}
     
     //function prompt_move
     //Prompts the player to make a move, then takes in the move as input.
@@ -222,7 +230,6 @@ struct Board{
             //Toggling Flag Mode:
             if (userInput=="q"){
                 end_game('s');
-                break;
             }
             
             else if (userInput == "F" || userInput == "f") {
@@ -300,6 +307,11 @@ struct Board{
             if (playerBoard[moveY*sizeX + moveX] == 'F') {
                 cout << "Cell is flagged, so can't be uncovered! Please Unflag first." << endl;
             }
+            else if (mineBoard[moveY*sizeX+moveX] == 1){ //if the player click on a mine
+                uncover(moveX, moveY);
+                print_board();
+                return end_game('n');
+            }
             else {
                 uncover(moveX, moveY);
                 print_board();
@@ -316,7 +328,19 @@ struct Board{
         if (tempFlagMode == true) {
             flagMode = false;
         }
-        prompt_move(); //If game not ended, we prompt.
+        
+        int cellToUncover = 0;
+        for (int i = 0; i < (sizeX*sizeY); i++ ){ //check if we are done by comparing the number of cells without a mine with the number of cells uncovered
+            if (playerBoard[i] == 'U' && mineBoard[i]==0){
+                cellToUncover++;
+            }
+        }
+        if ((sizeX*sizeY - cellToUncover) == numMines) {
+            return end_game('w');
+        }
+        else{
+            prompt_move(); //If game not ended, we prompt.
+        }
     }
     //Function: flagMove
     //Unflags a flagged cell, or flags an unflagged cell.
