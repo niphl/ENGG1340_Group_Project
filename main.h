@@ -12,6 +12,7 @@ using namespace std;
 
 int strToX(string s, int max);
 int strToY(string s, int max);
+void run_main_menu();
 
 struct Board{
     int * mineBoard;    //stores where the mines are, 1 for cells that have a mine, 0 for cells with no mine.
@@ -179,6 +180,27 @@ struct Board{
         }
         cout << endl;
     }
+    
+    void end_game(char decision='n') { 
+        string userInput;
+        if (decision = 's') {
+            saveGame(); //function yet to be defined
+            cout << "The game has been saved, you can continue playing it later" << endl;
+            cout << "You can finish your game from the main menu \"(2) Load Game\"" << endl;
+            cout << "(Press any key to go to the main menu...)"<< endl;
+            cin >> userInput;
+            run_main_menu();
+        
+    }
+        else {
+            cout << "The game is lost... You can start a new game from the main menu!" << endl;
+            cout << "(Press any key to go to the main menu...)" << endl;
+            cin >> userInput;
+            run_main_menu();
+        
+    }
+}
+    
     //function prompt_move
     //Prompts the player to make a move, then takes in the move as input.
     //If the move is valid, it sends a call to uncover the specified cell.
@@ -189,7 +211,7 @@ struct Board{
         bool tempFlagMode = false;
         string userInput;
         if (flagMode == false) {
-            cout << "Please uncover a cell: " << endl;
+            cout << "Please uncover a cell or type 'q' to quit and save game: " << endl;
         }
         else {
             cout << "Please flag a cell: " << endl;
@@ -198,7 +220,12 @@ struct Board{
             cin >> userInput;
             //Handle different cases now.
             //Toggling Flag Mode:
-            if (userInput == "F" || userInput == "f") {
+            if (userInput=="q"){
+                end_game('s');
+                break;
+            }
+            
+            else if (userInput == "F" || userInput == "f") {
                 if (mineBoard == NULL) {
                     cout << "Make a move first before using flag mode!";
                 }
@@ -361,7 +388,6 @@ int strToX(string s, int max){
         return -1;
     }
 }
-
 // Takes a user string and returns the Y coordinate indicated by the user. If error, return -1.
 int strToY(string s, int max){
     int output;
