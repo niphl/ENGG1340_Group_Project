@@ -126,8 +126,55 @@ void run_new_game() {
 
 
 //Loads a game from our file of saved games
+//Loads a game from our file of saved games
 void run_load_game(){
-    cout << "Please choose a game to load" << endl;
+    ifstream fin;
+    fin.open("savegame.txt");
+    int difficulty, SizeX, SizeY, numMines, Seed, moveHist0, moveHist1, moveHist2, x, count;
+    fin >> difficulty >> SizeX >> SizeY >> numMines >> Seed >> moveHist0 >> moveHist1 >> moveHist2;
+    if (fin.fail()){
+        cout << "Game not found!" << endl;
+    }
+    else {
+        Board b = {
+            NULL,       //Mineboard, int array
+            NULL,       //Playerboard, char array
+            NULL,       //MoveHistory, int array
+            false,      //Flagmode, off by default at start
+            difficulty, //Difficulty          
+            SizeX,      //SizeX
+            SizeY,      //SizeY
+            numMines,   //Num of Mines
+            Seed,       //Seed
+        };
+        if (moveHist2 >= 20000) {
+            moveHist2 -= 20000;
+        }
+        else {
+            moveHist2 -= 10000;
+        }
+        b.initialize(moveHist2/100, moveHist2%100);
+        b.uncover(moveHist2/100,moveHist2%100);
+        b.moveHistory[0] = moveHist0;
+        b.moveHistory[1] = moveHist1;
+        b.moveHistory[2] = moveHist2 + 10000;
+        count = 3;
+        while (fin >> x) {
+            b.moveHistory[count] = x;
+            count++;
+            if (x >= 20000) {
+                x -= 20000;
+                b.flagMove(x/100,x%100);
+        }
+            else {
+                x -= 10000;
+                b.uncover(x/100,x%100);
+            }
+        }
+        b.print_board();
+        b.prompt_move();
+        cout << "Game Loaded." << endl;
+    }
 }
 
 //Explains the rules of the game, via an interactive tutorial
