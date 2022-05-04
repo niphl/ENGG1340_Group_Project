@@ -234,6 +234,17 @@ void run_rules(){
         cin >> userInput;
     }
     
+    //Page between 8 and 9
+    cout << string(50, '\n');
+    cout << "There are 5 games mode: "<< endl;
+    cout << "1. Beginner: The easiest level" << endl;
+    cout << "2. Intermediate: For an intermediate board" << endl;
+    cout << "3. Expert: Only for the bravest" << endl;
+    cout << "4. Custom: Define your own board (size and difficulty)!" << endl;
+    cout << "5. Knight Sweeper special game mode: Only one non-mined cell in the board. Good Luck..." << endl;
+    cout << "(Press any key to continue...)"<< endl;
+    cin >> userInput;
+    
     //Page 9
     cout << string(50, '\n');
     cout << "Let's have a look at the main menu" << endl;
@@ -246,27 +257,8 @@ void run_rules(){
     
     //Page 10
     cout << string(50, '\n');
-    cout << "Let's have a look at the Load Game"<< endl; 
-    cout << "Main Menu: "<< endl; 
-    cout << "Enter (1) for New Game" << endl;
-    cout << "Enter (2) for Load Game" << endl; 
-    cout << "Enter (3) for Tutorial"<< endl;
-    cout << endl;
-    while (userInput != "2") {
-        cout << "Type '2' to play an unfinished game" << endl;
-        cin >> userInput;
-    }
-    
-   //Page 11
-   cout << string(50, '\n');
-   ifstream load;
-   load.open("savegame.txt");
-   if (load) {        
-       run_load_game();
-   }
-   else {
-        cout << "You need to have played and not finished a game first !"<< endl;
-    }
+    cout << "By typing '2' (Load Game menu)"<<endl;
+    cout <<"You will be able to finish your last unfinished game!"<<endl;
     cout << endl << "(Press any key to continue...)"<< endl;
     cin >> userInput;
     
