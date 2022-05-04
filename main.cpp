@@ -84,11 +84,18 @@ void run_new_game() {
             
             
             //input percentage of custom board filled with mines, stored in percentageMines
-            cout << "Please enter the difficulty of the board from 0 (easiest) to 10(hardest): ";
+            cout << "Please enter the difficulty of the board from 0 (easiest) to 10 (hardest): ";
             cin >> percentageMines;
             while (percentageMines < 0  || percentageMines > 10) {
                 cout << "Incorrect input. Please enter an integer between 0 and 10: ";
                 cin >> percentageMines;
+            }
+            
+            if (percentageMines == 0){ //if pMines=0 -> no mines, we add one as 0 implies no mines
+                percentageMines++;
+            }
+            else if (percentageMines==10){ //if pMines=10 -> board filled with mines, we remove 1 as 10 cause start_new_game to bug otherwise
+                percentageMines--;
             }
             
             int numMines;
@@ -273,23 +280,6 @@ void run_rules(){
     run_main_menu();
 }
 
-void end_game(char decision = 'n') { //'n' for not save and 's' for save
-    string userInput;
-    if (decision = 's') {
-        //saveGame(); //function yet to be defined
-        cout << "The game has been saved, you can continue playing it later" << endl;
-        cout << "You can finish your game from the main menu \"(2) Load Game\"" << endl;
-        cout << "(Press any key to go to the main menu...)"<< endl;
-        cin >> userInput;
-        run_main_menu();
-    }
-    else {
-        cout << "The game is lost... You can start a new game from the main menu!" << endl;
-        cout << "(Press any key to go to the main menu...)" << endl;
-        cin >> userInput;
-        run_main_menu();
-    }
-}
 
 void run_main_menu(){
     cout << string(50, '\n');
