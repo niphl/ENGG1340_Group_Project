@@ -326,6 +326,7 @@ void run_main_menu(){
     cout << "Enter (1) for New Game" << endl;
     cout << "Enter (2) for Load Game" << endl;
     cout << "Enter (3) for Tutorial" << endl;
+    cout << "Enter (q) to Quit"<< endl;
     string userInput;
     bool validInput = false;
     while (validInput == false) {
@@ -342,11 +343,15 @@ void run_main_menu(){
             validInput = true;
             run_rules();
         }
+        else if (userInput == "q" || userInput == "(q)" || userInput == "Q"){
+            exit(0);
+        }
         else {
             cout << "Invalid User Input. Please try again." << endl;
             cout << "Enter (1) for New Game" << endl;
             cout << "Enter (2) for Load Game" << endl;
             cout << "Enter (3) for Rules/Help" << endl;
+            cout << "Enter (q) to Quit"<< endl;
         }
     }
 }    
