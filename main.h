@@ -244,8 +244,7 @@ struct Board{
             //Handle different cases now.
             //Toggling Flag Mode:
             if (userInput=="q"){
-                end_game('s');
-                return;
+                return end_game('s');
             }
             
             else if (userInput == "F" || userInput == "f") {
@@ -302,9 +301,18 @@ struct Board{
                 int cellsUncovered = 0;
                 for (int i=0; i<sizeX * sizeY;i++){ //Loop accross all cells
                     if (adjacent(i%sizeX, i/sizeX, moveX, moveY) && playerBoard[i] == 'X') {
-                        uncover(i%sizeX, i/sizeX);
-                        recordMove (i%sizeX, i/sizeX, false);
-                        cellsUncovered++;
+                        //We don't step on a mine
+                        if (mineBoard[i] == 0) {
+                            uncover(i%sizeX, i/sizeX);
+                            recordMove (i%sizeX, i/sizeX, false);
+                            cellsUncovered++;
+                        }
+                        //We step on a mine
+                        else if (mineBoard[i] == 1) {
+                            uncover(i%sizeX, i/sizeX);
+                            print_board();
+                            return end_game('n');
+                        }
                     }
                 }
                 //If there's nothing to uncover, we give error message. Else, we print board.
