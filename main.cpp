@@ -67,18 +67,18 @@ void run_new_game() {
             int sizeX, sizeY, percentageMines;
             
             //input width of custom board, stored in sizeX
-            cout << "Please enter the width of the board (4-26): " ;
+            cout << "Please enter the width of the board (6-26): " ;
             cin >> sizeX;
-            while (sizeX < 4 || sizeX > 26){
-                cout << "Incorrect input. Please enter a value between 4 and 26: ";
+            while (sizeX < 6 || sizeX > 26){
+                cout << "Incorrect input. Please enter a value between 6 and 26: ";
                 cin >> sizeX;
             }
             
             //Must be an int 4-30. Take user input and store it in sizeX. (or sizeY?, sizeY here)
-            cout << "Please enter the height of the board (4-30): ";
+            cout << "Please enter the height of the board (6-30): ";
             cin >> sizeY;
-            while (sizeY < 4 || sizeY > 30){
-                cout << "Incorrect input. Please enter a value between 4 and 30: ";
+            while (sizeY < 6 || sizeY > 30){
+                cout << "Incorrect input. Please enter a value between 6 and 30: ";
                 cin >> sizeY;
             }
             
