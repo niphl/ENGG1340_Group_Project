@@ -161,9 +161,24 @@ struct Board{
                 else if (insertedLetter == '3') {
                     cout << "\033[;31m";
                 }
+                else if (insertedLetter == '4'){
+                    cout << "\033[;35m";
+                }
+                else if (insertedLetter == '5'){
+                    cout << "\033[;33m";
+                }
+                else if (insertedLetter == '6'){
+                    cout << "\033[;36m";
+                }
+                else if (insertedLetter == '7'){
+                    cout << "\033[;37m";
+                }
+                else if (insertedLetter == '8'){
+                    cout << "\033[;38m";
+                }
                 cout << setw(2) << insertedLetter;
                 //Return colours back to normal
-                if (insertedLetter == '1' || insertedLetter == '2' || insertedLetter == '3') {
+                if (insertedLetter == '1' || insertedLetter == '2' || insertedLetter == '3' || insertedLetter == '4' || insertedLetter == '5' || insertedLetter == '6' || insertedLetter == '7' || insertedLetter == '8') {
                     cout << "\033[0m";
                 }
             }
