@@ -29,7 +29,7 @@ void start_new_game(int difficulty, int SizeX, int SizeY, int numMines) {
         SizeX,      //SizeX
         SizeY,      //SizeY
         numMines,   //Num of Mines
-        time(0),    //Seed: use time function
+        int(time(0)),    //Seed: use time function
     };
     b.print_board();
     b.prompt_move();
