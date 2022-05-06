@@ -123,8 +123,6 @@ void run_new_game() {
     
 }
 
-
-//Loads a game from our file of saved games
 //Loads a game from our file of saved games
 void run_load_game(){
     ifstream fin;
@@ -190,6 +188,7 @@ void run_rules(){
         10,   //Num of Mines
         0,          //Seed
     };
+    
     // Page 1
     //tut.print_board();
     cout << string(50, '\n') << "Welcome! Here is a short tutorial on how to play." << endl;
@@ -287,7 +286,7 @@ void run_rules(){
         cin >> userInput;
     }
     
-    //Page between 8 and 9
+    //Page 9
     cout << string(50, '\n');
     cout << "There are 5 games mode: "<< endl;
     cout << "1. Beginner: The easiest level" << endl;
@@ -295,31 +294,35 @@ void run_rules(){
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
     
+    //Page 10
     cout << string(50, '\n');
     cout << "2. Intermediate: For an intermediate board" << endl;
     cout << "The board will of size 16x16 and includes 40 mines" << endl;
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
     
+    //Page 11
     cout << string(50, '\n');
     cout << "3. Expert: Only for the bravest" << endl;
     cout << "The board will of size 26x18 and includes 99 mines" << endl;
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
     
+    //Page 12
     cout << string(50, '\n');
     cout << "4. Custom Board Mode" << endl;
     cout <<"You can define your own board: size and difficulty!" << endl;
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
     
+    //Page 13
     cout << string(50, '\n');
     cout << "5. Knight Sweeper special game mode" << endl;
     cout << "Only cells one knight move away will be revealed!" <<endl;
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
     
-    //Page 9
+    //Page 14
     cout << string(50, '\n');
     cout << "Let's have a look at the main menu" << endl;
     cout << "The main menu allows you to:" << endl;
@@ -329,7 +332,7 @@ void run_rules(){
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
     
-    //Page 10
+    //Page 15
     cout << string(50, '\n');
     cout << "By typing '2' (Load Game menu)"<<endl;
     cout <<"You will be able to finish your last unfinished game!"<<endl;
