@@ -222,7 +222,7 @@ struct Board{
             cout << "Please uncover a cell or type 'q' to quit and save game: " << endl;
         }
         else {
-            cout << "Please flag a cell: " << endl;
+            cout << "Please flag a cell or type 'f' to quit flag mode: " << endl;
         }
         while ((moveX == -1 || moveY == -1)) {
             cin >> userInput;
@@ -243,6 +243,7 @@ struct Board{
                 else {
                     cout << "Flag mode turned off!" << endl;
                     flagMode = false;
+                    cout << "Please uncover a cell or type 'q' to quit and save game: " << endl;
                 }
             }
             //Short form flag move. Probably more complicated than it should be.
