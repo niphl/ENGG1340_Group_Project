@@ -358,12 +358,6 @@ void run_rules(){
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
     
-    //Page 15
-    cout << string(50, '\n');
-    cout << "By typing '2' (Load Game menu)"<<endl;
-    cout <<"You will be able to finish your last unfinished game!"<<endl;
-    cout << endl << "(Press any key to continue...)"<< endl;
-    cin >> userInput;
     
     //Final Tutorial Page 
     cout << string(50, '\n');
