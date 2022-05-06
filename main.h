@@ -245,6 +245,7 @@ struct Board{
             //Toggling Flag Mode:
             if (userInput=="q"){
                 end_game('s');
+                return;
             }
             
             else if (userInput == "F" || userInput == "f") {
