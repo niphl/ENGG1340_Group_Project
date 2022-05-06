@@ -90,20 +90,46 @@ void run_new_game() {
                 cin >> percentageMines;
             }
             
-            if (percentageMines == 0){ //if pMines=0 -> no mines, we add one as 0 implies no mines
-                percentageMines++;
+            int numMines;
+            
+            if (percentageMines == 0) {
+                percentageMines = 5;
             }
-            else if (percentageMines==10){ //if pMines=10 -> board filled with mines, we remove 1 as 10 cause start_new_game to bug otherwise
-                percentageMines--;
+            else if (percentageMines == 1) {
+                percentageMines = 7;
+            }
+            else if (percentageMines == 2) {
+                percentageMines = 10;
+            }
+            else if (percentageMines == 3) {
+                percentageMines = 13;
+            }
+            else if (percentageMines == 4) {
+                percentageMines = 15;
+            }
+            else if (percentageMines == 5) {
+                percentageMines = 17;
+            }
+            else if (percentageMines == 6) {
+                percentageMines = 20;
+            }
+            else if (percentageMines == 7) {
+                percentageMines = 25;
+            }
+            else if (percentageMines == 8) {
+                percentageMines = 30;
+            }
+            else if (percentageMines == 9) {
+                percentageMines = 40;
+            }
+            else if (percentageMines == 10) {
+                percentageMines = 50;
             }
             
-            int numMines;
-            numMines = percentageMines * sizeY * sizeX  / 10; //percentageMines *10 /100 = pMines /10 = percentages of mines filling the board
+            numMines = percentageMines * sizeY * sizeX  / 100;
             
             start_new_game(4, sizeX, sizeY, numMines);
-            
-            
-            
+                
         }
         else if (userInput == "5" || userInput == "(5)"){
             validInput = true;
