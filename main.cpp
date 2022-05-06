@@ -29,7 +29,7 @@ void start_new_game(int difficulty, int SizeX, int SizeY, int numMines) {
         SizeX,      //SizeX
         SizeY,      //SizeY
         numMines,   //Num of Mines
-        0,          //Seed
+        time(0),    //Seed: use time function
     };
     b.print_board();
     b.prompt_move();
@@ -61,7 +61,7 @@ void run_new_game() {
             //We differ a bit from the normal miensweeper of 30x16 to make the display nicer
             start_new_game(3, 26, 18, 99);
         }
-        else if (userInput == "4" || userInput == "(4)"){ // QUESTION HERE: sizeX is width or height? I assumed it is width, to change if its not in this else if statement
+        else if (userInput == "4" || userInput == "(4)"){ 
             validInput = true;
             string userInput;
             int sizeX, sizeY, percentageMines;
@@ -81,7 +81,6 @@ void run_new_game() {
                 cout << "Incorrect input. Please enter a value between 4 and 30: ";
                 cin >> sizeY;
             }
-            
             
             //input percentage of custom board filled with mines, stored in percentageMines
             cout << "Please enter the difficulty of the board from 0 (easiest) to 10 (hardest): ";
@@ -196,6 +195,7 @@ void run_rules(){
     cout << string(50, '\n') << "Welcome! Here is a short tutorial on how to play." << endl;
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
+    
     // Page 2
     cout << string(50, '\n');
     tut.print_board();
@@ -203,6 +203,7 @@ void run_rules(){
     cout << "To win, you must uncover every cell of the grid which doesn't have a mine on it." << endl;
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
+    
     // Page 3
     cout << string(50, '\n');
     tut.print_board();
@@ -216,6 +217,7 @@ void run_rules(){
         cout << "Type 'c3' to uncover the cell c3."<< endl;
         cin >> userInput;
     }
+    
     // Page 4
     tut.initialize(2,3);
     tut.uncover(2,3);
@@ -226,6 +228,7 @@ void run_rules(){
     cout << "There were no mines next to c4, so a big area has been uncovered!"<< endl;
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
+    
     // Page 5
     cout << string(50, '\n');
     tut.print_board();
@@ -233,6 +236,7 @@ void run_rules(){
     cout << "There is only one cell next to b2 that hasn't been uncovered yet, so that one must have the mine." << endl;
     cout << "(Press any key to continue...)..."<< endl;
     cin >> userInput;
+    
     // Page 6
     cout << string(50, '\n');
     tut.print_board();
@@ -245,6 +249,7 @@ void run_rules(){
         cout << "Type 'f' to toggle flagging mode."<< endl;
         cin >> userInput;
     }
+    
     // Page 7
     cout << string(50, '\n');
     tut.print_board();
@@ -266,6 +271,7 @@ void run_rules(){
         }
         cin >> userInput;
     }
+    
     // Page 8
     tut.flagMove(2,1);
     cout << string(50, '\n');
@@ -285,10 +291,31 @@ void run_rules(){
     cout << string(50, '\n');
     cout << "There are 5 games mode: "<< endl;
     cout << "1. Beginner: The easiest level" << endl;
+    cout << "The board will of size 8x8 and includes 10 mines" <<endl;
+    cout << "(Press any key to continue...)"<< endl;
+    cin >> userInput;
+    
+    cout << string(50, '\n');
     cout << "2. Intermediate: For an intermediate board" << endl;
+    cout << "The board will of size 16x16 and includes 40 mines" << endl;
+    cout << "(Press any key to continue...)"<< endl;
+    cin >> userInput;
+    
+    cout << string(50, '\n');
     cout << "3. Expert: Only for the bravest" << endl;
-    cout << "4. Custom: Define your own board (size and difficulty)!" << endl;
-    cout << "5. Knight Sweeper special game mode: Only one non-mined cell in the board. Good Luck..." << endl;
+    cout << "The board will of size 26x18 and includes 99 mines" << endl;
+    cout << "(Press any key to continue...)"<< endl;
+    cin >> userInput;
+    
+    cout << string(50, '\n');
+    cout << "4. Custom Board Mode" << endl;
+    cout <<"You can define your own board: size and difficulty!" << endl;
+    cout << "(Press any key to continue...)"<< endl;
+    cin >> userInput;
+    
+    cout << string(50, '\n');
+    cout << "5. Knight Sweeper special game mode" << endl;
+    cout << "Only cells one knight move away will be revealed!" <<endl;
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
     
