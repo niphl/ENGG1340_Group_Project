@@ -42,7 +42,7 @@ void run_new_game() {
     cout << "Enter (1) for Beginner" << endl;
     cout << "Enter (2) for Intermediate" << endl;
     cout << "Enter (3) for Expert" << endl;
-    cout << "Enter (4) for Custom (Game stats not saved)" << endl;
+    cout << "Enter (4) for Custom" << endl;
     cout << "Enter (5) for Knight Sweeper special game mode" << endl;
     string userInput;
     bool validInput = false;
@@ -63,23 +63,63 @@ void run_new_game() {
         }
         else if (userInput == "4" || userInput == "(4)"){ 
             validInput = true;
+            bool validInput2 = false;
             string userInput;
             int sizeX, sizeY, percentageMines;
             
             //input width of custom board, stored in sizeX
             cout << "Please enter the width of the board (6-26): " ;
-            cin >> sizeX;
-            while (sizeX < 6 || sizeX > 26){
-                cout << "Incorrect input. Please enter a value between 6 and 26: ";
-                cin >> sizeX;
+            while (validInput2 == false){           //loop until we get a valid input
+                validInput2 = true; 
+                cin >> userInput;
+                if (isdigit(userInput[0])) {        //check 1st digit for validity
+                    sizeX = userInput[0]-'0';
+                }
+                else {
+                    sizeX = -1;
+                    validInput2 = false;
+                }
+                if (isdigit(userInput[1])) {        //check 2nd digit for validity
+                    sizeX *= 10;
+                    sizeX += userInput[1]-'0';
+                }
+                else if (userInput[1] != '\0') {
+                    validInput2 = false;
+                }
+                if ((sizeX < 6) || (sizeX > 26)) {  //check if sizeX is in the right range
+                    validInput2 = false;
+                }
+                if (!validInput2){                  //check if input valid
+                    cout << "Invalid input. Please enter a value between 6 and 26: ";
+                }
             }
             
-            //Must be an int 4-30. Take user input and store it in sizeX. (or sizeY?, sizeY here)
+            //Take user input and store it in sizeY
+            validInput2 = false;
             cout << "Please enter the height of the board (6-30): ";
-            cin >> sizeY;
-            while (sizeY < 6 || sizeY > 30){
-                cout << "Incorrect input. Please enter a value between 6 and 30: ";
-                cin >> sizeY;
+            while (validInput2 == false){           //loop until we get a valid input
+                validInput2 = true; 
+                cin >> userInput;
+                if (isdigit(userInput[0])) {        //check 1st digit for validity
+                    sizeY = userInput[0]-'0';
+                }
+                else {
+                    sizeY = -1;
+                    validInput2 = false;
+                }
+                if (isdigit(userInput[1])) {        //check 2nd digit for validity
+                    sizeY *= 10;
+                    sizeY += userInput[1]-'0';
+                }
+                else if (userInput[1] != '\0') {
+                    validInput2 = false;
+                }
+                if ((sizeY < 6) || (sizeY > 26)) {  //check if sizeX is in the right range
+                    validInput2 = false;
+                }
+                if (!validInput2){                  //check if input valid
+                    cout << "Invalid input. Please enter a value between 6 and 26: ";
+                }
             }
             
             //input percentage of custom board filled with mines, stored in percentageMines
@@ -142,7 +182,7 @@ void run_new_game() {
             cout << "Enter (1) for Beginner" << endl;
             cout << "Enter (2) for Intermediate" << endl;
             cout << "Enter (3) for Expert" << endl;
-            cout << "Enter (4) for Custom (Game stats not saved)" << endl;
+            cout << "Enter (4) for Custom" << endl;
             cout << "Enter (5) for Knight Sweeper special game mode" << endl;
         }
     }
