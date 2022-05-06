@@ -209,7 +209,7 @@ struct Board{
         }
         else if (decision == 'n'){
             cout << "MINE!!!"<<endl;
-            cout << "You lost the game... You can start a new game from the main menu!" << endl;
+            cout << "You lost the game... You can start a new game or take a second chance using '(2) Load Game' in the main menu!" << endl;
             cout << "(Press any key to go to the main menu...)" << endl;
             cin >> userInput;
             run_main_menu();
