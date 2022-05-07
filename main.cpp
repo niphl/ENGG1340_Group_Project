@@ -384,7 +384,7 @@ void run_rules(){
     //Page 13
     cout << string(50, '\n');
     cout << "5. Knight Sweeper special game mode" << endl;
-    cout << "Only cells one knight move away will be revealed!" <<endl;
+    cout << "Adjacent cells are one knight move away from choosen cell!" <<endl;
     cout << "(Press any key to continue...)"<< endl;
     cin >> userInput;
     
