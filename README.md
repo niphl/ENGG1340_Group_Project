@@ -1,5 +1,8 @@
 # ENGG1340_Group_Project
 
+3 Minute Demo Video:
+https://drive.google.com/file/d/1AZEVwmbD5yZh1cpJSu5MdghSCYKsxhBY/view
+
 1. Team Members:
 
   - MOREL, Hugo Louis M (UID: 3035919755; GitHub: @hmorel)
